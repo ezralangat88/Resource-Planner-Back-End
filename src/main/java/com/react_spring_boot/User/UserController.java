@@ -50,6 +50,8 @@ public class UserController {
         user.setEmailId(userDetails.getEmailId());
         user.setLastName(userDetails.getLastName());
         user.setFirstName(userDetails.getFirstName());
+        user.setPhoneNo(userDetails.getPhoneNo());
+        user.setGender(userDetails.getGender());
 
         User updatedUser = userRepository.save(user);
         return ResponseEntity.ok(updatedUser);

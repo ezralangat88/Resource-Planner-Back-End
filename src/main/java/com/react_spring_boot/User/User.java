@@ -19,16 +19,24 @@ public class User {
     @Column(name = "email_id")
     private String emailId;
 
+    @Column(name = "phone_no")
+    private String phoneNo;
+
+    @Column(name = "gender")
+    private String gender;
+
     /** Default Constructor */
     public User() {
     }
 
     /** All Arguments Constructor */
-    public User(int id, String firstName, String lastName, String emailId) {
+    public User(int id, String firstName, String lastName, String emailId, String phoneNo, String gender) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.emailId = emailId;
+        this.phoneNo = phoneNo;
+        this.gender = gender;
     }
 
     /** Getters and Setters */
@@ -62,5 +70,21 @@ public class User {
 
     public void setEmailId(String emailId) {
         this.emailId = emailId;
+    }
+
+    public String getPhoneNo() {
+        return phoneNo;
+    }
+
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }
