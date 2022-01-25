@@ -1,17 +1,21 @@
 package com.react_spring_boot.Organization;
 
 import com.react_spring_boot.User.User;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
+
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
+@ToString
+@Entity
+
+
 public class Organization {
 
     @Id
@@ -23,4 +27,6 @@ public class Organization {
 
 //    @OneToMany(mappedBy = "organization")
 //    List<User> users = new ArrayList<>();
+
+
 }

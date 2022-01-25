@@ -1,6 +1,7 @@
 package com.react_spring_boot.Organization;
 
 import com.react_spring_boot.Exception.ResourceNotFoundException;
+import com.react_spring_boot.Exception.ResourceNotFoundExceptionOrg;
 import com.react_spring_boot.User.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,7 +12,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
+@RequestMapping("/api/v1/")
 public class OrganizationController {
 
     @Autowired
@@ -60,7 +63,7 @@ public class OrganizationController {
     public Map<String, Boolean> deleteOrg(@PathVariable(value = "organizationId") Integer organizationId)
             throws ResourceNotFoundException {
         Organization organization = organizationRepository.findById(organizationId)
-                .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + organizationId));
+                .orElseThrow(() -> new ResourceNotFoundExceptionOrg("Employee not found for this id :: " + organizationId));
 
         organizationRepository.delete(organization);
         Map<String, Boolean> response = new HashMap<>();
