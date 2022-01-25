@@ -1,7 +1,10 @@
 package com.react_spring_boot.User;
 
 
+import com.react_spring_boot.Organization.Organization;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "User")
@@ -24,6 +27,11 @@ public class User {
 
     @Column(name = "gender")
     private String gender;
+
+    @ManyToOne
+    @NotBlank(message = "Organization is required")
+    @JoinColumn(name = "organization_id")
+    private Organization organization;
 
     /** Default Constructor */
     public User() {
