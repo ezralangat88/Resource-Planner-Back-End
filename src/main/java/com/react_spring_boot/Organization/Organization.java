@@ -21,6 +21,6 @@ public class Organization {
     @Column(name = "organizationName")
     private String organizationName;
 
-    @OneToMany(mappedBy = "organization")
-    List<User> users = new ArrayList<>();
+//    @OneToMany(mappedBy = "organization")
+//    List<User> users = new ArrayList<>();
 }

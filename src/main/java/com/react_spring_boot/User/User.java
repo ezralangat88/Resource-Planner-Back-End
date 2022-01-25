@@ -28,10 +28,10 @@ public class User {
     @Column(name = "gender")
     private String gender;
 
-    @ManyToOne
-    @NotBlank(message = "Organization is required")
-    @JoinColumn(name = "organization_id")
-    private Organization organization;
+//    @ManyToOne
+//    @NotBlank(message = "Organization is required")
+//    @JoinColumn(name = "organization_id")
+//    private Organization organization;
 
     /** Default Constructor */
     public User() {
