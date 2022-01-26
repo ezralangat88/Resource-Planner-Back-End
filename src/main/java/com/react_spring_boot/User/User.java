@@ -28,10 +28,10 @@ public class User {
     @Column(name = "gender")
     private String gender;
 
-//    @ManyToOne
+    @ManyToOne
 //    @NotBlank(message = "Organization is required")
-//    @JoinColumn(name = "organization_id")
-//    private Organization organization;
+    @JoinColumn(name = "organization_id")
+    private Organization organization;
 
     /** Default Constructor */
     public User() {
@@ -94,5 +94,13 @@ public class User {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public Organization getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(Organization organization) {
+        this.organization = organization;
     }
 }

@@ -32,6 +32,7 @@ public class OrganizationController {
     public ResponseEntity<Organization> getOrganizationById(
             @PathVariable(value = "organizationId")
             Integer organizationId) throws ResourceNotFoundException {
+
         Organization organization = organizationRepository.findById(organizationId)
                 .orElseThrow(() -> new ResourceNotFoundException("Organization not found for this id :: " + organizationId));
 
@@ -47,11 +48,11 @@ public class OrganizationController {
     /** UPDATE */
     @PutMapping("/organizations/{organizationId}")
     public ResponseEntity<Organization> updateOrg(@PathVariable(value = "organizationId") Integer organizationId,
-                                           @RequestBody Organization organizationDetails) {
+                                                  @RequestBody Organization organizationDetails) {
+
         Organization organization = organizationRepository.findById(organizationId)
                 .orElseThrow(() -> new ResourceNotFoundException("Organization not found for this id :: " + organizationId));
 
-        organization.setOrganizationId(organizationDetails.getOrganizationId());
         organization.setOrganizationName(organizationDetails.getOrganizationName());
 
         Organization updatedOrg = organizationRepository.save(organization);
