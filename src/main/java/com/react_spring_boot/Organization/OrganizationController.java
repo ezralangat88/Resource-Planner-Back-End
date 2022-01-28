@@ -3,14 +3,14 @@ package com.react_spring_boot.Organization;
 import com.react_spring_boot.Exception.ResourceNotFoundException;
 import com.react_spring_boot.Exception.ResourceNotFoundExceptionOrg;
 import com.react_spring_boot.User.User;
+import com.react_spring_boot.User.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -72,6 +72,18 @@ public class OrganizationController {
         return response;
     }
 
+    /** Finding Organization's Users */
+    @GetMapping("/organizations/{organizationId}/users")
+    public List<User> getUsersInOrganization(@PathVariable int organizationId){
+        Optional<Organization> organization = organizationRepository.findById(organizationId);
 
+        List<User> users = organization.get().getUsers();
+        return users;
+    }
 
 }
+
+
+
+
+//http://localhost:8080/api/v1/user/1/organization

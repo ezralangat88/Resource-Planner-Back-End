@@ -1,6 +1,7 @@
 package com.react_spring_boot.User;
 
 import com.react_spring_boot.Exception.ResourceNotFoundException;
+import com.react_spring_boot.Organization.Organization;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -69,16 +71,12 @@ public class UserController {
         response.put("deleted", Boolean.TRUE);
         return response;
     }
+    /** Finding User's Organization */
+    @GetMapping("/user/{id}/organization")
+    public Organization getUsersOrganization(@PathVariable int id){
+        Optional<User> user = userRepository.findById(id);
 
-    //    /** DELETE 2 */
-//    @DeleteMapping("/user/{id}")
-//    public ResponseEntity<?> deleteUser(@PathVariable(value = "id") Integer id)
-//            throws ResourceNotFoundException {
-//        userRepository.findById(id)
-//                .orElseThrow(() -> new ResourceNotFoundException("user not found for this id :: " + id));
-//
-//        userRepository.deleteById(id);
-//
-//        return ResponseEntity.ok().build();
-//    }
+        return user.get().getOrganization();
+    }
 }
+

@@ -36,8 +36,8 @@ public class BoardroomController {
 
 
     /** CREATE / SAVE  */
-    @PostMapping("/venue/{boardroom_id}")
-    public Boardroom saveRoom( @RequestBody Boardroom boardroom){
+    @PostMapping("/create/venue")
+    public Boardroom saveRoom(@RequestBody Boardroom boardroom){
         return boardroomRepository.save(boardroom);
     }
 

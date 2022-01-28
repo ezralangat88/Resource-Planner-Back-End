@@ -1,11 +1,15 @@
 package com.react_spring_boot.User;
 
 
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 import com.react_spring_boot.Organization.Organization;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
+@JsonIncludeProperties({"firstName", "lastName","emailId","phoneNo", "gender"})
 @Entity
 @Table(name = "User")
 public class User {

@@ -1,5 +1,6 @@
 package com.react_spring_boot.Organization;
 
+import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 import com.react_spring_boot.User.User;
 import com.react_spring_boot.Venues.Boardroom;
 import lombok.*;
@@ -15,8 +16,7 @@ import java.util.List;
 @Setter
 @ToString
 @Entity
-
-
+@JsonIncludeProperties({"organizationId", "organizationName"})
 public class Organization {
 
     @Id
@@ -27,6 +27,7 @@ public class Organization {
     @Column(name = "organizationName")
     private String organizationName;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "organization")
     List<User> users = new ArrayList<>();
 
