@@ -64,7 +64,7 @@ public class OrganizationController {
     public Map<String, Boolean> deleteOrg(@PathVariable(value = "organizationId") Integer organizationId)
             throws ResourceNotFoundException {
         Organization organization = organizationRepository.findById(organizationId)
-                .orElseThrow(() -> new ResourceNotFoundExceptionOrg("Employee not found for this id :: " + organizationId));
+                .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + organizationId));
 
         organizationRepository.delete(organization);
         Map<String, Boolean> response = new HashMap<>();

@@ -36,7 +36,7 @@ public class BoardroomController {
 
 
     /** CREATE / SAVE  */
-    @PostMapping("/create/venue")
+    @PostMapping("/venue/create")
     public Boardroom saveRoom(@RequestBody Boardroom boardroom){
         return boardroomRepository.save(boardroom);
     }
@@ -45,7 +45,7 @@ public class BoardroomController {
 
 
     /** UPDATE */
-    @PutMapping("/venue/{boardroom_id}")
+    @PutMapping("/venue/update/{boardroom_id}")
     public ResponseEntity<Boardroom> updateRoomById(@PathVariable(value = "boardroom_id") Integer boardroom_id,
                                                     @RequestBody Boardroom boardroomDetails) throws ResourceNotFoundException {
 
@@ -66,7 +66,7 @@ public class BoardroomController {
 
 
     /** DELETE */
-    @DeleteMapping("/venue/{boardroom_id}")
+    @DeleteMapping("/venue/delete/{boardroom_id}")
     public Map<String, Boolean> deleteRoom(@PathVariable(value = "boardroom_id") Integer boardroom_id) throws ResourceNotFoundException{
 
         Boardroom boardroom = boardroomRepository.findById(boardroom_id)

@@ -21,10 +21,10 @@ public class Organization {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "organizationId")
+    @Column()
     private int organizationId;
 
-    @Column(name = "organizationName")
+    @Column()
     private String organizationName;
 
     @ToString.Exclude

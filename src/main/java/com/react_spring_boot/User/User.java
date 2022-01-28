@@ -9,7 +9,7 @@ import com.react_spring_boot.Organization.Organization;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
-@JsonIncludeProperties({"firstName", "lastName","emailId","phoneNo", "gender"})
+@JsonIncludeProperties({"id","firstName", "lastName","emailId","phoneNo", "gender"})
 @Entity
 @Table(name = "User")
 public class User {

@@ -25,6 +25,7 @@ public class UserController {
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
+
     /** READ / Find By ID */
     @GetMapping("/user/{id}")
     public ResponseEntity<User> getEmployeeById(@PathVariable(value = "id") Integer id)
