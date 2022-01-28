@@ -52,11 +52,11 @@ public class BoardroomController {
         Boardroom boardroom = boardroomRepository.findById(boardroom_id)
                 .orElseThrow(() -> new ResourceNotFoundException("Boardroom not found for this id :: " + boardroom_id));
 
-        boardroom.setBoardroom_name(boardroomDetails.getBoardroom_name());
+        boardroom.setBoardroomName(boardroomDetails.getBoardroomName());
         boardroom.setCapacity(boardroomDetails.getCapacity());
         boardroom.setTv(boardroomDetails.getTv());
-        boardroom.setWhiteboard(boardroom.getWhiteboard());
-        boardroom.setConference_phone(boardroom.getConference_phone());
+        boardroom.setWhiteboard(boardroomDetails.getWhiteboard());
+        boardroom.setConferencePhone(boardroomDetails.getConferencePhone());
 
         Boardroom updatedBoardroom = boardroomRepository.save(boardroom);
 
