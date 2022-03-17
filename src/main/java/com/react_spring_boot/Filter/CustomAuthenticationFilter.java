@@ -43,14 +43,14 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
         String password = request.getParameter("password") ;
         log.info("username is: {}", username);
         log.info("Password is: {}", password );
-        //Creating object of UsernamePasswordAuthenticationToken
-        //Wrapping info that is already coming with the request and then passing it to UsernamePasswordAuthenticationToken
-        //and calling authenticationManager to authenticate the user that is logging in the request
+        //Creating object of UsernamePasswordAuthenticationToken.
+        //Wrapping info that is already coming with the request and then passing it to UsernamePasswordAuthenticationToken.
+        //and calling authenticationManager to authenticate the user that is logging in the request.
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, password );
         return  authenticationManager.authenticate(authenticationToken);
     }
 
-    // successfulAuthentication method is called once login is successful
+    // successfulAuthentication method is called once login is successful.
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication) throws IOException, ServletException {
         //Getting the authenticated user info for generating jwt using User from core.user-details
@@ -65,13 +65,13 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
                 .withClaim("roles", user.getAuthorities().stream().map(GrantedAuthority ::getAuthority).collect(Collectors.toList())) //with String name and list
                 .sign(algorithm);
 
-        //Refresh Token
+        //Refresh Token.
         String refresh_token = JWT.create()
                 .withSubject(user.getUsername())
                 .withExpiresAt(new Date(System.currentTimeMillis() + 30 * 60 * 1000))
                 .withIssuer(request.getRequestURL().toString())
                 .sign(algorithm);
-        //Sending results response to the user in the frontend
+        //Sending results response to the user in the frontend.
 
         Map<String, String> tokens = new HashMap<>();
         tokens.put("access_token", access_token);
