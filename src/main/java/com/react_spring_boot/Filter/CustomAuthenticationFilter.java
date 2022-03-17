@@ -28,7 +28,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @Slf4j
 public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-    //AuthenticationManager will be called to authenticate user by attemptAuthentication and credentials are parsed
+    //AuthenticationManager will be called to authenticate user by attemptAuthentication and credentials are parsed.
     private AuthenticationManager authenticationManager;
 
     public CustomAuthenticationFilter(AuthenticationManager authenticationManager){
@@ -53,11 +53,11 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
     // successfulAuthentication method is called once login is successful.
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication) throws IOException, ServletException {
-        //Getting the authenticated user info for generating jwt using User from core.user-details
+        //Getting the authenticated user info for generating jwt using User from core.user-details.
         User user = (User) authentication.getPrincipal();
-        //Algorithm for signing jwt and refresh tokens that are going to be assigned to logged-in user
+        //Algorithm for signing jwt and refresh tokens that are going to be assigned to logged-in user.
         Algorithm algorithm = Algorithm.HMAC256("secret".getBytes());
-        //Access Token
+        //Access Token.
         String access_token = JWT.create()
                 .withSubject(user.getUsername())
                 .withExpiresAt(new Date(System.currentTimeMillis() + 10 * 60 * 1000))
